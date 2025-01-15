@@ -17,7 +17,7 @@ group:
 npx degit xyflow/vite-react-flow-template app-name
 ```
 
-如果你已经有完成的React环境, 可以直接安装依赖:
+如果你已经有完成的 React 环境, 可以直接安装依赖:
 
 ```bash
 pnpm add @xyflow/react
@@ -30,15 +30,15 @@ pnpm add @xyflow/react
 ```tsx
 import React from 'react';
 import { ReactFlow } from '@xyflow/react';
- 
+
 import '@xyflow/react/dist/style.css';
- 
+
 const initialNodes = [
   { id: '1', position: { x: 0, y: 0 }, data: { label: 'Dooring' } },
   { id: '2', position: { x: 0, y: 100 }, data: { label: 'Flow' } },
 ];
 const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }];
- 
+
 export default function App() {
   return (
     <div style={{ width: '100%', height: '30vh' }}>
@@ -50,7 +50,7 @@ export default function App() {
 
 有几个值得注意的点:
 
-- 我们必须导入react-flow的样式文件
+- 我们必须导入 react-flow 的样式文件
 - `<ReactFlow />` 组件必须被包裹在一个指定宽高的容器里
 
 ## 添加节点交互
@@ -71,22 +71,23 @@ import {
   useEdgesState,
   addEdge,
 } from '@xyflow/react';
- 
+import '@xyflow/react/dist/style.css';
+
 const initialNodes = [
   { id: '1', position: { x: 0, y: 0 }, data: { label: 'Dooring' } },
   { id: '2', position: { x: 0, y: 100 }, data: { label: 'Flow' } },
 ];
 const initialEdges = [{ id: 'e1-2', source: '1', target: '2' }];
- 
+
 export default function App() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
- 
+
   const onConnect = useCallback(
     (params) => setEdges((eds) => addEdge(params, eds)),
     [setEdges],
   );
- 
+
   return (
     <div style={{ width: '100%', height: '30vh' }}>
       <ReactFlow
@@ -117,7 +118,8 @@ import {
   useEdgesState,
   addEdge,
 } from '@xyflow/react';
- 
+import '@xyflow/react/dist/style.css';
+
 const initialNodes = [
   { id: '1', position: { x: 0, y: 0 }, data: { label: 'Dooring' } },
   { id: '2', position: { x: 0, y: 100 }, data: { label: 'Flow' } },
@@ -125,18 +127,18 @@ const initialNodes = [
 ];
 const initialEdges = [
   { id: 'e1-2', source: '1', target: '2' },
-  { id: 'e1-3', source: '1', target: '3' }
-  ];
- 
+  { id: 'e1-3', source: '1', target: '3' },
+];
+
 export default function App() {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
- 
+
   const onConnect = useCallback(
     (params) => setEdges((eds) => addEdge(params, eds)),
     [setEdges],
   );
- 
+
   return (
     <div style={{ width: '100%', height: '30vh' }}>
       <ReactFlow
@@ -157,6 +159,3 @@ export default function App() {
 ```
 
 到此, 我们就创建好了我们第一个可交互的流程图, 接下来我们继续介绍 `react-flow` 的原理和更多高级的技巧.
-
-
-
